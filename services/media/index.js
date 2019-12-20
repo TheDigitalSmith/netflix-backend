@@ -1,10 +1,10 @@
 const express = require("express")
 const router = express.Router();
-const {getFilms, writeFilms,} = require("../data/dataHelper")
+const {getFilms, writeFilms, getReviews} = require("../data/dataHelper");
 const fs = require("fs-extra");
 const path = require("path")
 const multer = require("multer");
-
+const {check, validationResult, sanitizebody} = require ('express-validator');
 const uuidv4 = require("uuid/v4")
 
 //RETRIEVING FILMS
@@ -13,8 +13,26 @@ router.get("/",async (req,res)=>{
     res.send(films);
 })
 
+//RETRIEVING THE REVIEWS FOR FILMS
+router.get("/:id/reviews",async (req,res)=>{
+    const reviews = await getReviews();
+    const reviewsForFilm = reviews.filter(review=> review.elementId === req.params.id);
+    if (reviewsForFilm){
+        res.send(reviewsForFilm)
+    }else{
+        res.status("404").send("no reviews available")
+    }
+})
+
 //POSTING FILMS
-router.post("/", async(req,res)=>{
+router.post("/",
+[check("Title").isLength({min:2}).withMessage("Title needs to be at least 2 chars"),
+check("Year").exists().withMessage("Year must be included"),
+check("imdbID").exists().withMessage("please include the imdbID"),
+check("type").exists().withMessage("please include type"),
+check("Poster").exists().withMessage("please include an image")
+],
+async(req,res)=>{
     const films = await getFilms();
     const newFilm = {
         ...req.body,

@@ -2,7 +2,7 @@ const path= require ('path');
 const fs = require('fs-extra');
 
 const reviewsFilePath = path.join(__dirname,"reviews.json");
-const filmsFilePath = path.join(__dirname,"films.json")
+const filmsFilePath = path.join(__dirname,"films.json");
 
 module.exports = {
     getFilms: async ()=>{

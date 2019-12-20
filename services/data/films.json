@@ -1,1 +1,11 @@
-{"Title":"Avengers","Year":"2014","imdbID":"1231231231","Type":"Action","Poster":"https://upload.wikimedia.org/wikipedia/en/f/f9/TheAvengers2012Poster.jpg","_id":"958c7b80-de3b-4cca-b7a0-2e2d68000d39","createdAt":"2019-12-20T10:42:07.195Z","updatedAt":"2019-12-20T10:49:11.836Z","poster":"/images/958c7b80-de3b-4cca-b7a0-2e2d68000d39.jpg"}
+[{
+    "Title": "Avengers",
+    "Year": "2014",
+    "imdbID": "1231231231",
+    "Type": "Action",
+    "Poster": "https://upload.wikimedia.org/wikipedia/en/f/f9/TheAvengers2012Poster.jpg",
+    "_id": "958c7b80-de3b-4cca-b7a0-2e2d68000d39",
+    "createdAt": "2019-12-20T10:42:07.195Z",
+    "updatedAt": "2019-12-20T10:49:11.836Z",
+    "poster": "/images/958c7b80-de3b-4cca-b7a0-2e2d68000d39.jpg"
+}]
