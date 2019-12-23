@@ -3,6 +3,8 @@ const router = express.Router();
 const {getFilms, writeFilms, getReviews} = require("../data/dataHelper");
 const fs = require("fs-extra");
 const path = require("path")
+const async = require("express-async-await");
+const fetch = require("node-fetch");
 const multer = require("multer");
 const {check, validationResult, sanitizebody} = require ('express-validator');
 const uuidv4 = require("uuid/v4")
@@ -12,6 +14,20 @@ router.get("/",async (req,res)=>{
     const films = await getFilms();
     res.send(films);
 })
+
+// //RETRIEVING FILMS BY ID FROM OMDB
+// router.get("/:id",async(req,res)=>{
+//     function getOmdb (){
+//         const imdbId = req.params.id
+//         return fetch (`http://www.omdbapi.com/?apikey=7ef98004&${imdbId}`);
+//     }
+//     const processData = async () => {
+//         const film = await getOmdb()
+//         const ResponseData = await film.json()
+//         console.log(ResponseData)
+//     }
+// })
+
 
 //RETRIEVING THE REVIEWS FOR FILMS
 router.get("/:id/reviews",async (req,res)=>{
